@@ -2,21 +2,19 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+defaults: &defaults
+  working_directory: /tmp
+  docker:
+    - image: circleci/node:8.11.2-browsers
+
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.11.2-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: /tmp/mmilovidov
-
+    <<: *defaults
     steps:
+      - run: mkdir -p workspace
+      - run: echo "Hello, world!" > workspace/echo-output
+
       - checkout
 
       # Download and cache dependencies
@@ -42,18 +40,20 @@ jobs:
           name: Build React App
           command: npm run build
 
-      - attach_workspace:
-          at: /tmp/mmilovidov
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: workspace
+          # Must be relative path from root
+          paths:
+            - echo-output
 
   deploy:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.11.2-browsers
-
-    working_directory: /tmp/mmilovidov
-
+    <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
 
       - run:
           name: Install Firebase Tools
