@@ -26,7 +26,13 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install
+      - run:
+          name: Install Packages
+          command: npm install
+
+      - run:
+          name: Install Firebase Tools
+          command: npm install firebase-tools
 
       - save_cache:
           paths:
