@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:8.11.2-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -42,9 +42,15 @@ jobs:
           name: Build React App
           command: npm run build
 
+      - attach_workspace:
+          at: /tmp/mmilovidov
+
   deploy:
-    machine:
-      enabled: true
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11.2-browsers
+
+    working_directory: /tmp/mmilovidov
 
     steps:
       - checkout
@@ -52,7 +58,7 @@ jobs:
       - run:
           name: Install Firebase Tools
           command: npm install firebase-tools
-          
+
       - run:
           name: Deploy Master to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
