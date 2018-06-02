@@ -3,7 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 defaults: &defaults
-  working_directory: /tmp
+  working_directory: /tmp/workspace
   docker:
     - image: circleci/node:8.11.2-browsers
 
@@ -12,9 +12,6 @@ jobs:
   build:
     <<: *defaults
     steps:
-      - run: mkdir -p workspace
-      - run: echo "Hello, world!" > workspace/echo-output
-
       - checkout
 
       # Download and cache dependencies
@@ -43,7 +40,7 @@ jobs:
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
-          root: workspace
+          root: ./
           # Must be relative path from root
           paths:
             - echo-output
