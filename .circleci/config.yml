@@ -30,10 +30,6 @@ jobs:
           name: Install Packages
           command: npm install
 
-      - run:
-          name: Install Firebase Tools
-          command: npm install firebase-tools
-
       - save_cache:
           paths:
             - node_modules
@@ -54,8 +50,12 @@ jobs:
       - checkout
 
       - run:
+          name: Install Firebase Tools
+          command: npm install firebase-tools
+          
+      - run:
           name: Deploy Master to Firebase
-          command: firebase deploy --token "$FIREBASE_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
 
 workflows:
   version: 2
