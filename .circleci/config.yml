@@ -47,12 +47,12 @@ jobs:
       - checkout
 
       - run:
-        name: Build React App
-        command: npm run build
+          name: Build React App
+          command: npm run build
 
       - run:
-        name: Deploy Master to Firebase
-        command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+          name: Deploy Master to Firebase
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
   version: 2
