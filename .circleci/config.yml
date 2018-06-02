@@ -31,7 +31,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      # - run: npm run test
+      # - run: npm test
 
       - run:
           name: Build React App
@@ -71,7 +71,10 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
