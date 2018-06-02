@@ -13,6 +13,9 @@ class App extends Component {
         <p className="App-intro">
           My website is <b>coming soon</b>. In the meantime, feel free to be enchanted by the ReactJS logo.
         </p>
+        <p className="App-intro">
+          I am testing to see if my CircleCI workflow succeeded by deploying this change.
+        </p>
       </div>
     );
   }
