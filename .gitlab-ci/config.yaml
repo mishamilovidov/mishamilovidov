@@ -1,0 +1,43 @@
+stages:
+  - build
+  # - Test
+  - deploy
+
+build:
+  stage: build
+  image: registry.gitlab.com/m.alexeyvich/mmilovidov
+  only:
+    - master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+  before_script:
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - build/*
+      - node_modules/*
+      - public/*
+      - src/*
+      - .firebaserc
+      - firebase.json
+      - package.json
+      - package-lock.json
+
+deploy-prod:
+  stage: deploy
+  image: registry.gitlab.com/m.alexeyvich/mmilovidov
+  only:
+    - master
+  when: manual
+  environment:
+    name: production
+    url: https://mmilovidov.com
+  dependencies:
+    - build
+  script:
+    - npm install firebase-tools
+    - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
