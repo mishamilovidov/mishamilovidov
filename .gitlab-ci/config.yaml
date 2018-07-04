@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  image: registry.gitlab.com/m.alexeyvich/mmilovidov
+  image: registry.gitlab.com/m_milovidov/mmilovidov
   only:
     - master
   cache:
@@ -29,7 +29,7 @@ build:
 
 deploy-prod:
   stage: deploy
-  image: registry.gitlab.com/m.alexeyvich/mmilovidov
+  image: registry.gitlab.com/m_milovidov/mmilovidov
   only:
     - master
   when: manual
