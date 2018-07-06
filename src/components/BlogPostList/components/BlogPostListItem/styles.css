@@ -20,22 +20,13 @@
   margin-top: 0px;
 }
 
-.BlogPostListItem .metadata:before {
-  content: "\f303";
+.BlogPostListItem .metadata > div {
   color: #b3b3b1;
   margin-left: 5px;
   margin-right: 0.25em;
   position: relative;
   top: -1px;
   display: inline-block;
-  font-family: "Genericons";
-  font-size: 16px;
-  line-height: 1;
-  vertical-align: middle;
-  transform: scale(1.25);
-  -webkit-transform: scale(1.25);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .BlogPostListItem .metadata span {
@@ -48,6 +39,30 @@
   transition: color .14s ease-in-out;
   line-height: inherit;
   text-decoration: none;
+}
+
+.BlogPostListItem .date:before {
+  content: "\f303";
+  font-family: "Genericons";
+  font-size: 16px;
+  line-height: 1;
+  vertical-align: middle;
+  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.BlogPostListItem .read-time:before {
+  content: "\f100";
+  font-family: "Genericons";
+  font-size: 16px;
+  line-height: 1;
+  vertical-align: middle;
+  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .BlogPostListItem .excerpt {
