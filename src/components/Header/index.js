@@ -4,6 +4,7 @@ import facebook from './icons/facebook.png';
 import instagram from './icons/instagram.png';
 import linkedin from './icons/linkedin.png';
 import twitter from './icons/twitter.png';
+import gitlab from './icons/gitlab.png';
 
 class Header extends Component {
   render() {
@@ -31,6 +32,11 @@ class Header extends Component {
           <span className="Header-icon">
             <a href="//www.facebook.com/m.alexeyvich" target="_blank" rel="noopener noreferrer">
               <img src={facebook} alt="Misha Milovidov's Facebook" />
+            </a>
+          </span>
+          <span className="Header-icon">
+            <a href="//www.gitlab.com/users/m_milovidov/projects" target="_blank" rel="noopener noreferrer">
+              <img src={gitlab} alt="Misha Milovidov's GitLab" />
             </a>
           </span>
         </div>
