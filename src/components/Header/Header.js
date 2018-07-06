@@ -9,7 +9,7 @@ class Header extends Component {
   render() {
     return (
       <header className="Header-header">
-        <img src="https://www.gravatar.com/avatar/fcb755908eac859bac7ab6632212dd51?s=300" className="Header-logo" alt="profile" />
+        <img src="//www.gravatar.com/avatar/fcb755908eac859bac7ab6632212dd51?s=300" className="Header-logo" alt="profile" />
         <h1 className="Header-title">Misha Milovidov</h1>
         <h5 className="Header-subtitle">Software Engineer | Hippopotamus Admirer | Fixed-Gear Cyclist</h5>
         <div className="Header-icons">
