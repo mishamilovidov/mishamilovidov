@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Header.css';
+import './styles.css';
 import facebook from './icons/facebook.png';
 import instagram from './icons/instagram.png';
 import linkedin from './icons/linkedin.png';
