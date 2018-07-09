@@ -1,0 +1,8 @@
+.BlogPostList > .error {
+  text-align: center;
+  font-style: italic;
+}
+
+.BlogPostList > .loading {
+  text-align: center;
+}
