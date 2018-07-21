@@ -1,4 +1,4 @@
-.Header-header {
+.Header {
   background-color: #fafafa;
   /* height: 150px; */
   padding: 2.625em 1.75em 1em 1.75em;
@@ -13,35 +13,35 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.Header-title {
+.Header .title {
   font-size: 2em;
   margin: .4375em 0 0;
 }
 
-.Header-subtitle {
+.Header .subtitle {
   margin-top: .75em;
   font-weight: normal;
 }
 
-.Header-logo {
+.Header .logo {
   max-width: 80px;
   height: 80px;
   margin: auto;
   border-radius: 80px;
 }
 
-.Header-icons {
+.Header .icons {
   margin-top: .65em;
 }
 
-.Header-icon > a > img {
+.Header .icon > a > img {
   max-width: 25px;
   height: 25px;
   border-radius: 25px;
   margin-right: 10px;
 }
 
-.Header-icon:after {
+.Header .icon:after {
   content: "\00B7";
   font-weight: 600;
   margin-right: 8px;
@@ -50,10 +50,39 @@
   height: 30px;
 }
 
-.Header-icon:last-child > a > img {
+.Header .icon:last-child > a > img {
   margin-right: 0px;
 }
 
-.Header-icon:last-child:after {
+.Header .icon:last-child:after {
   content: "";
+}
+
+@media (max-width: 576px) {
+  .Header {
+    padding: 1.25em 0.625em;
+    text-align: left;
+  }
+
+  .Header .icons,
+  .Header .subtitle {
+    display: none;
+  }
+
+  .Header .logo {
+    position: absolute;
+    top: 0.625em;
+    left: 0.625em;
+    max-width: 40px;
+    height: 40px;
+    margin: 0px;
+    border-radius: 40px;
+  }
+
+  .Header .title {
+    display: inline-block;
+    font-size: 1.25em;
+    margin: 0px;
+    margin-left: 47px;
+  }
 }
