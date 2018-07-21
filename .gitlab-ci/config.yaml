@@ -32,7 +32,7 @@ deploy-prod:
   image: registry.gitlab.com/m_milovidov/mmilovidov
   only:
     - master
-  when: manual
+  when: on_success
   environment:
     name: production
     url: https://mmilovidov.com
