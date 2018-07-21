@@ -1,8 +1,5 @@
 import axios from 'axios';
-
-const API_TOKEN = 'R8T6E)Ql%V%a8@L8%cQnDo0yJa^wk^&5)3xUmbJSrsDt4(3&A0Mfpj2LM*iqENlk';
-const SITE_ID = '148566154';
-const ROOT_URL = `https://public-api.wordpress.com/rest/v1.1/sites/${SITE_ID}`;
+import { API_TOKEN, ROOT_URL } from '../../../../services/wordpress';
 
 export const FETCH_BLOG_POSTS_LOADING = 'FETCH_BLOG_POSTS_LOADING';
 export const FETCH_BLOG_POSTS_SUCCESS = 'FETCH_BLOG_POSTS_SUCCESS';

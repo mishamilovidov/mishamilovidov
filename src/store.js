@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { blogPosts, blogPostsFetchError, blogPostsIsLoading } from './services/wordpress/posts/reducer';
+import { BlogPostListReducer } from './scenes/Blog/components/BlogPostList/reducer';
 
 const rootReducer = combineReducers({
-  blogPosts,
-  blogPostsFetchError,
-  blogPostsIsLoading
+  ...BlogPostListReducer
 });
 
 export default rootReducer;

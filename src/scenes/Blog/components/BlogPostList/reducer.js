@@ -30,3 +30,9 @@ export function blogPostsFetchError(state = false, action) {
             return state;
     }
 }
+
+export const BlogPostListReducer = {
+  blogPosts,
+  blogPostsFetchError,
+  blogPostsIsLoading
+};
