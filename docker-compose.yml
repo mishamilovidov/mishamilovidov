@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - './config/ssl:/etc/nginx/certs'
+      - '/var/run/docker.sock:/tmp/docker.sock:ro'
+  web:
+    build:
+      context: .
+      dockerfile: config/Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      - VIRTUAL_HOST=mishamilovidov.construo.us
+    expose:
+      - '3000'
+    ports:
+      - '8080:3000'
