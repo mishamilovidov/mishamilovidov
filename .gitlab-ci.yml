@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  image: registry.gitlab.com/mishamilovidov/mishamilovidov
+  image: node:8
   only:
     - master
   cache:
@@ -29,7 +29,7 @@ build:
 
 deploy-prod:
   stage: deploy
-  image: registry.gitlab.com/mishamilovidov/mishamilovidov
+  image: node:8
   only:
     - master
   when: on_success
