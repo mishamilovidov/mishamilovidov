@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import DocumentMeta from 'react-document-meta';
 import Loader from 'react-loader-spinner'
 import moment from 'moment';
+import striptags from 'striptags';
 import wordCount from 'html-word-count';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -17,7 +19,10 @@ class BlogPost extends Component {
   }
 
   render() {
-    const { hasErrored, isLoading, blogPost } = this.props;
+    const { 
+			hasErrored, isLoading, blogPost,
+			blogPost: { title, excerpt, tags }
+		} = this.props;
     const blogFeatureImage = blogPost.featured_image;
     const blogTitle = blogPost.title;
     const blogContent = blogPost.content;
@@ -48,32 +53,38 @@ class BlogPost extends Component {
     }
 
     return (
-      <div className="BlogPost">
-        <div className="back">
-          <Link to="/blog">
-            <span role="img" aria-label="Arrow Left Emoji">⬅️</span> Blog Posts
-          </Link>
-        </div>
-        <div className="tile">
-          <img
-            src={blogFeatureImage}
-            alt={blogTitle}
-            onError={(e)=>{
-              e.target.src="//dummyimage.com/400x400/e5e5e5/e5e5e5.png"
-            }}
-          />
-          <h1 className="title" dangerouslySetInnerHTML={{__html: blogTitle}}></h1>
-          <div className="metadata">
-            <div className="date">
-              <span>{blogDate}</span>
-            </div>
-            <div className="read-time">
-              <span>{readTime} Minutes</span>
-            </div>
-          </div>
-          <div className="excerpt" dangerouslySetInnerHTML={{__html: blogContent}} />
-        </div>
-      </div>
+			<DocumentMeta {...{
+					title: `${title} | Misha Milovidov`,
+					description: striptags(excerpt),
+					canonical: window.location.href,
+					meta: { charset: 'utf-8', name: { keywords: tags ? Object.keys(tags).join(',') : '' } }
+				}}
+			>
+				<div className='BlogPost'>
+					<div className='back'>
+						<Link to='/blog'>
+							<span role='img' aria-label='Arrow Left Emoji'>⬅️</span> Blog Posts
+						</Link>
+					</div>
+					<div className='tile'>
+						<img
+							src={blogFeatureImage}
+							alt={blogTitle}
+							onError={(e) => e.target.src='//dummyimage.com/400x400/e5e5e5/e5e5e5.png'}
+						/>
+						<h1 className='title' dangerouslySetInnerHTML={{__html: blogTitle}}></h1>
+						<div className='metadata'>
+							<div className='date'>
+								<span>{blogDate}</span>
+							</div>
+							<div className='read-time'>
+								<span>{readTime} Minutes</span>
+							</div>
+						</div>
+						<div className='excerpt' dangerouslySetInnerHTML={{__html: blogContent}} />
+					</div>
+				</div>
+			</DocumentMeta>
     );
   }
 }

@@ -19,6 +19,7 @@ export const getBlogPost = (slug) => {
         'Authorization': 'BEARER ' + API_TOKEN
       },
     }).then((response) => {
+			console.log(response.data)
       dispatch(blogPostIsLoading(false));
       dispatch(blogPostFetchSuccess(response.data));
     }).catch(err => {
