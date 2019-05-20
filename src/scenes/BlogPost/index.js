@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getBlogPost } from './actions';
 import Loader from 'react-loader-spinner'
 import moment from 'moment';
 import wordCount from 'html-word-count';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getBlogPost } from '../../actions';
 
 import './styles.css';
 
@@ -76,7 +77,8 @@ class BlogPost extends Component {
     );
   }
 }
-function mapStateToProps(state, ownProps) {
+
+const mapStateToProps = (state, ownProps) => {	
   return {
     slug: ownProps.match.params.slug,
     blogPost: state.blogPost,
@@ -85,4 +87,6 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, { getBlogPost })(BlogPost);
+export default compose(
+	connect(mapStateToProps, { getBlogPost }),
+)(BlogPost);

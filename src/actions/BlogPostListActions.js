@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { API_TOKEN, ROOT_URL } from '../../../../services/wordpress';
-
-export const FETCH_BLOG_POSTS_LOADING = 'FETCH_BLOG_POSTS_LOADING';
-export const FETCH_BLOG_POSTS_SUCCESS = 'FETCH_BLOG_POSTS_SUCCESS';
-export const FETCH_BLOG_POSTS_FAILURE = 'FETCH_BLOG_POSTS_FAILURE';
+import { API_TOKEN, ROOT_URL } from '../services/wordpress';
+import {
+	FETCH_BLOG_POSTS_LOADING,
+	FETCH_BLOG_POSTS_SUCCESS,
+	FETCH_BLOG_POSTS_FAILURE
+} from './types';
 
 export function getAllBlogPosts() {
   const url = `${ROOT_URL}/posts`;

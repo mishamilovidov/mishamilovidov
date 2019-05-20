@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { API_TOKEN, ROOT_URL } from '../../services/wordpress';
+import { API_TOKEN, ROOT_URL } from '../services/wordpress';
+import {
+	FETCH_BLOG_POST_LOADING,
+	FETCH_BLOG_POST_SUCCESS,
+	FETCH_BLOG_POST_FAILURE
+} from './types';
 
-export const FETCH_BLOG_POST_LOADING = 'FETCH_BLOG_POST_LOADING';
-export const FETCH_BLOG_POST_SUCCESS = 'FETCH_BLOG_POST_SUCCESS';
-export const FETCH_BLOG_POST_FAILURE = 'FETCH_BLOG_POST_FAILURE';
-
-export function getBlogPost(slug) {
+export const getBlogPost = (slug) => {
   const url = `${ROOT_URL}/posts/slug:${slug}`;
 
   return (dispatch) => {
@@ -20,12 +21,12 @@ export function getBlogPost(slug) {
     }).then((response) => {
       dispatch(blogPostIsLoading(false));
       dispatch(blogPostFetchSuccess(response.data));
-    }).catch(() => {
+    }).catch(err => {
+			console.log(err);
       dispatch(blogPostFetchError(true));
     })
   };
-
-}
+};
 
 export const blogPostIsLoading = (bool) => ({
   type: FETCH_BLOG_POST_LOADING,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAllBlogPosts } from './actions';
+import { getAllBlogPosts } from '../../../../actions';
 import Loader from 'react-loader-spinner'
 import BlogPostListItem from './components/BlogPostListItem';
 

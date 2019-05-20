@@ -2,7 +2,7 @@ import {
   FETCH_BLOG_POSTS_LOADING,
   FETCH_BLOG_POSTS_SUCCESS,
   FETCH_BLOG_POSTS_FAILURE
-} from './actions';
+} from '../actions/types';
 
 export function blogPostsIsLoading(state = false, action) {
     switch (action.type) {

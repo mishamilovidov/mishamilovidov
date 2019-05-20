@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
-
-import './styles.css';
-import Routes from './routes';
+import Main from '../components/Main';
 import Header from '../components/Header';
+import './styles.css';
 
 class App extends Component {
   render() {
@@ -11,11 +9,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="content">
-          <BrowserRouter>
-            <Switch>
-              <Routes />
-            </Switch>
-          </BrowserRouter>
+					<Main />
         </div>
       </div>
     );
