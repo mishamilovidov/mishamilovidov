@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "mishamilovidov",
     "public": "build",
     "ignore": [
       "firebase.json",
