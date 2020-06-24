@@ -1,0 +1,10 @@
+feature:
+  - '*feature*'
+  - '*feat*'
+  - '*enhancement*'
+fix: 
+  - '*fix*'
+  - '*bug*'
+chore: 
+  - '*chore*'
+  - '*maintenance*'
