@@ -1,0 +1,40 @@
+name: draft
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: draft release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: setup gcloud for secret manager
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '281.0.0'
+          service_account_key: ${{ secrets.GCP_SA_SECRETMANAGER_KEY }}
+      
+      - name: setup gcloud beta components
+        run: gcloud components install beta
+
+      - name: export command to fetch github access token
+        run: |
+          echo "::set-env name=CMD_FETCH_GITHUB_PAT_MISHAMILOVIDOV::gcloud beta secrets versions access latest --secret=GITHUB_PAT_MISHAMILOVIDOV --quiet --project=osito-oto"
+
+      - name: mask github access token
+        run: echo "::add-mask::$(eval "$CMD_FETCH_GITHUB_PAT_MISHAMILOVIDOV")"
+
+      - name: export github access token
+        run: echo "::set-env name=GITHUB_PAT_MISHAMILOVIDOV::$(eval "$CMD_FETCH_GITHUB_PAT_MISHAMILOVIDOV")"
+
+      - name: draft release
+        uses: release-drafter/release-drafter@v5
+        with:
+          config-name: release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_PAT_MISHAMILOVIDOV }}
