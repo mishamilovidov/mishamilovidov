@@ -1,0 +1,42 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - '!dev'
+      - '!test'
+      - '!prod'
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  codebase:
+    name: test codebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-   
+
+      - name: install dependencies
+        run: npm install
+
+      - name: test codebase
+        run: npm run test:ci
+        continue-on-error: true

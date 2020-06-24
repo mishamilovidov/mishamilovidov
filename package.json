@@ -1,18 +1,28 @@
 {
   "name": "mishamilovidov",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A website for Misha Milovidov",
+  "scripts": {
+    "lint": "eslint src/",
+    "test": "echo \"test\"",
+    "test:ci": "CI=true npm test",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "engines": {
+    "node": "10"
+  },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "axios": "^0.18.0",
-    "firebase": "^6.0.2",
-    "firebase-tools": "^6.10.0",
+    "axios": "^0.18.1",
+    "firebase": "^6.6.2",
+    "firebase-tools": "^6.12.0",
     "html-word-count": "^2.0.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "react": "^16.8.6",
+    "lodash": "^4.17.15",
+    "moment": "^2.27.0",
+    "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^16.8.6",
@@ -22,19 +32,18 @@
     "react-redux-firebase": "^3.0.0-alpha.6",
     "react-router-dom": "^5.0.0",
     "react-router-last-location": "^2.0.0-beta.3",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.4.1",
     "redux": "^4.0.1",
     "redux-firestore": "^0.8.0",
     "redux-form": "^8.2.0",
     "redux-thunk": "^2.3.0",
     "striptags": "^3.1.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-plugin-promise": "^4.2.1"
   },
+  "private": true,
   "browserslist": {
     "production": [
       ">0.2%",
